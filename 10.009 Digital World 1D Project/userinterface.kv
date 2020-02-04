@@ -1,0 +1,101 @@
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+#:import SlideTransition kivy.uix.screenmanager.SlideTransition
+ScreenManager:
+    transition: FadeTransition()
+    id: screen_manager
+    LoadScreen:
+        id: load_screen
+        name: "LoadScreen"
+        manager: 'screen_manager'
+    MainScreen:
+        id: main_screen
+        name: 'MainScreen'
+        manager: 'screen_manager'
+    RightScreen:
+        id: 'right_screen'
+        name: 'RightScreen'
+        manager: 'screen_manager'
+
+<LoadScreen>:
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            text: "SUTD"
+            color: 0, 0, 0, 0
+        Button:
+            background_color: 0, 0, 0, 0
+            on_press: app.root.current = 'MainScreen'
+            pos: self.pos
+            size: self.size
+        Image:
+            source: r'C:\Users\tscd1\PycharmProjects\KivyApp\venv\SUTD_Logo.png'
+<MainScreen>:
+    FloatLayout:
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            orientation: 'vertical'
+            padding: 10
+            spacing: 10
+            AsyncImage:
+                source: app.temp3 #r'C:\Users\tscd1\PycharmProjects\KivyApp\venv\canteenpic.jpeg'
+                size_hint_y: 80
+            Label:
+                text : app.temp2
+                color: 0, 0, 0, 1
+                size_hint_y: 10
+                bold : True
+            Label:
+                text : "No. of people :   " + app.temp
+                color: 0, 0, 0, 1
+                size_hint_y: 10
+                bold : True
+        Button:
+            background_color: 0, 0, 0, 0
+            on_press:
+                app.root.current = "RightScreen"
+                app.root.transition = SlideTransition(direction="right")
+            pos: self.pos
+            size: self.size
+
+<RightScreen>:
+    FloatLayout:
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            orientation: 'vertical'
+            padding: 10
+            spacing: 10
+            AsyncImage:
+                source: app.temp4 #r'C:\Users\tscd1\PycharmProjects\KivyApp\venv\canteenpic.jpeg'
+                size_hint_y: 80
+            Label:
+                text : app.temp2
+                color: 0, 0, 0, 1
+                size_hint_y: 10
+                bold : True
+            Label:
+                text : "No. of people :   " + app.temp
+                color: 0, 0, 0, 1
+                size_hint_y: 10
+                bold : True
+        Button:
+            background_color: 0, 0, 0, 0
+            on_press:
+                app.root.current = "MainScreen"
+                app.root.transition = SlideTransition(direction="left")
+            pos: self.pos
+            size: self.size

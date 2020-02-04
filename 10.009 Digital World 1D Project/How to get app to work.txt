@@ -1,0 +1,14 @@
+Python file (KivyApp3.py)
+-Make sure the location of the KV file is specified correctly in your computer
+eg. userinterface = r"C:\Users\tscd1\PycharmProjects\KivyApp\venv\userinterface.kv"
+
+
+-KV file (userinterface.kv)
+Make sure the location of the SUTD Logo is specified correctly in your computer
+eg. source: r'C:\Users\tscd1\PycharmProjects\KivyApp\venv\SUTD_Logo.png'
+
+If both files is found, app should work fine.
+
+Make sure to download necessary dependencies.
+-pyrebase 4
+-kivy modules
